@@ -52,7 +52,7 @@ const currentStep = handleActions({
 }, 'initial');
 
 // selectors
-export const isAtTheInitialStepSelector = flow(currentStepSetter, eq('initial'));
+export const isAtTheInitialStepSelector = flow(currentStepSelector, eq('initial'));
 
 // actionCreators
 export const gotoInitialStep = flow(constant('initial'), currentStepSetter);
