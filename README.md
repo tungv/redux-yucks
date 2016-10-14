@@ -32,6 +32,7 @@ epics:
 ```js
 import { combineReducers } from 'redux';
 import { createAction, handleActions } from 'redux-actions';
+import { combineEpics } from 'redux-observable';
 import { ACTIONS } from './some/other/file';
 
 import flow from 'lodash/fp/flow';
@@ -68,6 +69,10 @@ const updateStepWhenUpdateComplete = actions$ =>
     .filter(flow(get('type'), eq(ACTIONS.AWESOME)))
     .filter(flow(get('payload.awesomeness'), gte(9000)))
     .mapTo(currentStepSetter('success'));
+
+export const epic = combineEpics({
+  updateStepWhenUpdateComplete,
+});
 
 export default { myAwesomeModule: reducer };
 ```
