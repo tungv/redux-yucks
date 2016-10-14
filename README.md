@@ -43,10 +43,13 @@ import gte from 'lodash/fp/gte';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mapTo';
 
-// currentStep
+// helpers
 const takePayload = (state, { payload }) => payload;
+
+// currentStep
 const ACTION_SETTER_currentStep = 'myAwesomeModule/action/SETTER_currentStep';
 export const currentStepSetter = createAction(ACTION_SETTER_currentStep);
+export const currentStepSelector = get('myAwesomeModule.currentStep');
 const currentStep = handleActions({
   [ACTION_SETTER_currentStep]: takePayload
 }, 'initial');
